@@ -7,6 +7,9 @@
 </head>
 <body>
     <h1>This is my first page</h1>
-<P>Move code</P>
+<?php
+require_once "load.php";
+print $Obj->user_age("Alex", 2004);
+?>
 </body>
 </html>
