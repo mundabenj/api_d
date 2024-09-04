@@ -1,7 +1,6 @@
 <?php
 
 class user_details{
-
     var $fname;
     public $username;
     var $yob;
