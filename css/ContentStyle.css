@@ -3,3 +3,18 @@
     padding: 20px;
     text-align: center;
 }
+.row::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.content{
+    float: left;
+    width: 66.66%;
+    padding: 15px;
+}
+.side_bar{
+    float: left;
+    width: 33.33%;
+    padding: 15px;
+}
