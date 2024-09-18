@@ -4,7 +4,7 @@
 
 function classAutoLoad($classname){
 
-    $directories = ["contents", "layouts", "menus"];
+    $directories = ["contents", "layouts", "menus", "forms"];
 
     foreach($directories AS $dir){
         $filename = dirname(__FILE__) . DIRECTORY_SEPARATOR . $dir . DIRECTORY_SEPARATOR . $classname . ".php";
@@ -21,6 +21,7 @@ spl_autoload_register('classAutoLoad');
     $ObjMenus = new menus();
     $ObjHeadings = new headings();
     $ObjCont = new contents();
+    $ObjForm = new user_forms();
 
 require "includes/constants.php";
 require "includes/dbConnection.php";
