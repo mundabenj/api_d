@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 13, 2024 at 11:05 AM
+-- Generation Time: Sep 20, 2024 at 10:16 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -78,7 +78,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `email` (`email`),
   KEY `genderId` (`genderId`),
   KEY `roleId` (`roleId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`userId`, `fullname`, `username`, `email`, `password`, `created`, `updated`, `genderId`, `roleId`) VALUES
+(1, 'Anna', 'anna', 'anna@yahoo.com', '', '2024-09-20 11:14:50', '2024-09-20 11:14:50', 0, 0),
+(2, 'alex', 'alexuser', 'alex@yahoo.com', '', '2024-09-20 11:15:27', '2024-09-20 11:15:27', 0, 0);
 
 --
 -- Constraints for dumped tables
