@@ -6,7 +6,7 @@ class user_forms{
         <div class="col-md-9">
           <div class="h-100 p-5 text-bg-dark rounded-3">
             <h2>Sign Up</h2>
-            <form>
+            <form action="" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="fullname" class="form-label">Fullname:</label>
                     <input type="text" name="fullname" class="form-control form-control-lg" maxlength="50" id="fullname" placeholder="Enter your name">
@@ -19,7 +19,7 @@ class user_forms{
                     <label for="username" class="form-label">Username:</label>
                     <input type="text" name="username" class="form-control form-control-lg" maxlength="50" id="username" placeholder="Enter your username">
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" name="signup" class="btn btn-primary">Submit</button>
               </form>
           </div>
         </div>
