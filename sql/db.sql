@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 20, 2024 at 10:16 AM
+-- Generation Time: Sep 23, 2024 at 07:17 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,9 +20,9 @@ SET time_zone = "+00:00";
 --
 -- Database: `api_d`
 --
-DROP DATABASE IF EXISTS `api_d`;
-CREATE DATABASE IF NOT EXISTS `api_d` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `api_d`;
+DROP DATABASE IF EXISTS `ics_e`;
+CREATE DATABASE IF NOT EXISTS `ics_e` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `ics_e`;
 
 -- --------------------------------------------------------
 
