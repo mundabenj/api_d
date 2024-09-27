@@ -1,2 +1,2 @@
-@import url("StructureStyle.css");
-@import url("ContentStyle.css");
+@import url(bootstrap.min.css);
+@import url(custom.css);
