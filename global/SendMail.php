@@ -8,7 +8,7 @@ use PHPMailer\PHPMailer\Exception;
 class SendMail{
 
 //These must be at the top of your script, not inside a function
-public function SendMail($mail, $mailMsg){
+public function SendMail($mailMsg){
 
     //Load Composer's autoloader
     require 'plugins/PHPMailer/vendor/autoload.php';
@@ -23,12 +23,12 @@ public function SendMail($mail, $mailMsg){
         $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
         $mail->Username   = 'bbitalex@gmail.com';                     //SMTP username
-        $mail->Password   = 'secret';                               //SMTP password
+        $mail->Password   = '';                               //SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
         $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set 
     
         //Recipients
-        $mail->setFrom('ics@gmail.com', 'Test ICS');
+        $mail->setFrom('ics@gmail.com', 'ICS 2024');
         $mail->addAddress($mailMsg['to_email'], $mailMsg['to_name']);     //Add a recipient
     
         //Content
