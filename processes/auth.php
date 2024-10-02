@@ -1,6 +1,14 @@
 <?php
 class auth{
-    public function signup($conn, $ObjGlob){
+
+    public function bind_to_template($replacements, $template) {
+        return preg_replace_callback('/{{(.+?)}}/', function($matches) use ($replacements) {
+            return $replacements[$matches[1]];
+        }, $template);
+    }
+
+
+    public function signup($conn, $ObjGlob, $ObjSendMail, $lang){
         if(isset($_POST["signup"])){
 
             $errors = array();
@@ -55,6 +63,42 @@ if (!ctype_alpha($username)) {
 // Implement 2FA (email => PHP-Mailer)
 // ===================================
 // Send email verification with an OTP (OTC)
+
+$verification_code = rand(10000,99999);
+
+$msg['verify_code_sbj'] = 'Verify Code ICS';
+$msg['verify_code_msg'] = 'We are going to use this email plug in to send a unique code <p><b>'.$verification_code.'</b></p>';
+
+// $mailMsg = [ "To Name", "To Email", "subject",  "Message" ]
+$_SESSION['mailMsg'] = [
+    "to_name" => $fullname, 
+    "to_email" => $email_address
+ ];
+
+ $conf['site_initials'] = "ICS 2024";
+
+ $conf['site_url'] = "http://localhost/api_d";
+
+if(isset($_SESSION['mailMsg'])){
+
+if(is_array($_SESSION['mailMsg'])){
+
+    $mailMsg = $_SESSION['mailMsg'];
+
+    $replacements = array('fullname' => $_SESSION["mailMsg"]["to_name"], 'email_address' =>
+    $_SESSION["mailMsg"]["to_email"], 'unlock_token_pass' => $verification_code, 'site_full_name' => strtoupper($conf['site_initials']));
+
+    $ObjSendMail->SendMail($mail, [
+    'to_name' => $mailMsg["to_name"],
+    'to_email' => $mailMsg["to_email"],
+    'subject' => $this->bind_to_template($replacements, $lang["AccountVerification"]),
+    'message' => $this->bind_to_template($replacements, $lang["AccRegVer_template"])
+]);
+
+}
+}
+
+
 // Verify that the password is identical to the repeat passsword
 // verify that the password length is between 4 and 8 characters
 if(!count($errors)){
