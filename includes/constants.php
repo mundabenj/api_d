@@ -1,4 +1,6 @@
 <?php
+date_default_timezone_set("AFRICA/Nairobi");
+
     //Creating constants
     define('DBTYPE', 'PDO');
     define('HOSTNAME', '127.0.0.1');
@@ -11,6 +13,7 @@
     $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://';
     $base_url = $protocol . $_SERVER['HTTP_HOST'] . '/';
 
-    $conf['verification_code'] = rand(10000,99999);
+    $conf['ver_code_time'] = date("Y-m-d H:i:s", strtotime("+ 24hours"));
+    $conf['verification_code'] = rand(100000,999999);
     $conf['site_initials'] = "ICS 2024";
     $conf['site_url'] = "$base_url/". DBNAME;
