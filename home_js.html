@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- JS display possibilities -->
+
+<!-- possibility -- 1 -->
+
+    <script>
+        document.write('Hello');
+    </script>
+    <br>
+    <script>
+        document.write(54 + 32);
+    </script>
+    <br>
+    <a href="#" onclick="document.write(254 + 132)">Click here</a>
+<br>
+<!-- possibility -- 2 -->
+<p id="ics"></p>
+
+<script>
+    document.getElementById('ics').innerHTML = 'This is my first JS';
+    document.getElementById('ics').style.fontSize = '18px';
+    document.getElementById('ics').style.display = 'block';
+    // document.getElementById('ics').style.display = 'none';
+</script>
+
+<button onclick="document.getElementById('MyImg').src='images/bulb_on.webp'">Turn On</button>
+
+<img src="images/bulb_on.webp" id="MyImg" width="150px">
+
+<button onclick="document.getElementById('MyImg').src='images/bulb_off.webp'">Turn Off</button>
+
+<!-- possibility -- 3 -->
+<script>
+    // window.alert('Connection Failed!!');
+</script>
+
+<!-- possibility -- 4 -->
+<br>
+<a href="#" onclick="return confirm('Are you sure?');">Delete</a>
+
+<!-- possibility -- 5 -->
+
+<script>
+    console.log(45/15);
+</script>
+<br>
+
+<span id="ics_D" onclick="MyScritp(5, 9);">Next</span>
+<br>
+<script>
+var age = 18;
+let lastname = 'Okama';
+const db_name = 'ics_d';
+
+document.write('I am ' + age + ' My name is ' + lastname + ' and ' );
+
+if(age > 17 )
+document.write('I am an adult');
+else
+document.write('I am NOT an adult');
+
+</script>
+
+<script src="js/script.js"></script>
+</body>
+</html>
