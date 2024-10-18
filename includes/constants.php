@@ -19,3 +19,5 @@ date_default_timezone_set("AFRICA/Nairobi");
     $conf['pass_length_min_limit'] = 6;
     $conf['site_initials'] = "ICS 2024";
     $conf['site_url'] = "$base_url/". DBNAME;
+    // (@strathmore.edu, @gmail.com, @yahoo.com, @mada.co.ke) and not (@yanky.net)
+    $conf['valid_domains'] = ["strathmore.edu", "gmail.com", "yahoo.com", "mada.co.ke", "outlook.com"];

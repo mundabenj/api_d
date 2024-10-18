@@ -81,6 +81,9 @@ class menus{
                     <a class="nav-link" href="#">Contact Us</a>
                   </li>
                   <li class="nav-item">
+                    <a class="nav-link" href="signin.php">Sign In</a>
+                  </li>
+                  <li class="nav-item">
                     <a class="nav-link" href="signup.php">Sign Up</a>
                   </li>
                 </ul>
