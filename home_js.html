@@ -6,7 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body onload="startTimer();">
 
 <!-- JS display possibilities -->
 
@@ -63,13 +63,35 @@ const db_name = 'ics_d';
 
 document.write('I am ' + age + ' My name is ' + lastname + ' and ' );
 
-if(age > 17 )
+if(age > 17 ){
 document.write('I am an adult');
-else
+}
+else{
 document.write('I am NOT an adult');
-
+}
 </script>
+<br>
+<a href="" onclick="window.print();">Print</a>
 
+<br>
+<script>
+    // let username = prompt('Please enter your name');
+    // const message  = "Hello " + username + " \
+    // You username " + username + " has been logged successfully! \
+    // Regrards";
+
+    // const new_message = `Hello ${username}, <br> 
+    // You username ${username.toUpperCase()} has been logged successfully!<br> 
+    // Regrards`;
+
+    // document.write(new_message);
+</script>
+<br>
+<br>
+
+<p id="tmr"></p>
+
+<script src="js/startTimer.js"></script>
 <script src="js/script.js"></script>
 </body>
 </html>
