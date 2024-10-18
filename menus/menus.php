@@ -80,12 +80,21 @@ class menus{
                   <li class="nav-item">
                     <a class="nav-link" href="#">Contact Us</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="signin.php">Sign In</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="signup.php">Sign Up</a>
-                  </li>
+<?php
+if(isset($_SESSION['consort'])){ ?>
+<li class="nav-item">
+  <a class="nav-link" href="?signout">Sign Out</a>
+</li>
+<?php }else{ ?>
+<li class="nav-item">
+  <a class="nav-link" href="signin.php">Sign In</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="signup.php">Sign Up</a>
+</li>
+<?php } ?>
+
+
                 </ul>
                 <form role="search">
                   <input class="form-control" type="search" placeholder="Search" aria-label="Search">

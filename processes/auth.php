@@ -212,4 +212,11 @@ if(!count($errors)){
             }
         }
     }
+    public function signout($conn, $ObjGlob, $ObjSendMail, $lang, $conf){
+        if(isset($_GET["signout"])){
+            unset($_SESSION['consort']);
+            header('Location: '.  $conf['site_url']);
+            exit();
+        }
+    }
 }
