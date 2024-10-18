@@ -14,6 +14,8 @@ date_default_timezone_set("AFRICA/Nairobi");
     $base_url = $protocol . $_SERVER['HTTP_HOST'] . '/';
 
     $conf['ver_code_time'] = date("Y-m-d H:i:s", strtotime("+ 24hours"));
+    $conf['ver_code_timeout'] = date("Y-m-d H:i:s", strtotime("- 24hours"));
     $conf['verification_code'] = rand(100000,999999);
+    $conf['pass_length_min_limit'] = 6;
     $conf['site_initials'] = "ICS 2024";
     $conf['site_url'] = "$base_url/". DBNAME;

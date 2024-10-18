@@ -85,7 +85,7 @@ if(!count($errors)){
                 ]);
                 
                 header('Location: verify_code.php');
-                unset($_SESSION["fullname"], $_SESSION["email_address"], $_SESSION["username"]);
+                unset($_SESSION["fullname"], $_SESSION["username"]);
                 exit();
             }else{
                 die($insert);
@@ -129,5 +129,42 @@ if(!count($errors)){
             $ObjGlob->setMsg('errors', $errors, 'invalid');
         }
         }  
+    }
+
+    public function set_passphrase($conn, $ObjGlob, $ObjSendMail, $lang, $conf){
+        if(isset($_POST["set_pass"])){
+
+            $errors = array();
+            $passphrase = $_SESSION["passphrase"] = $conn->escape_values($_POST["passphrase"]);
+            $conf_passphrase = $_SESSION["conf_passphrase"] = $conn->escape_values($_POST["conf_passphrase"]);
+
+            // Verify the password length limit
+            if(strlen($passphrase) > 30 || strlen($passphrase) < $conf['pass_length_min_limit'] ){
+                $errors['pass_length_err'] = "Invalid password length. Password must have between ".$conf['pass_length_min_limit'] ." and 30 characters.";
+            }
+
+            // Verify that the password and confirm password match
+            if(!strcmp($passphrase, $conf_passphrase) == 0){
+                $errors['conf_pass_err'] = "Passwords don't match.";
+            }
+
+            if(!count($errors)){
+                $hash_pass = PASSWORD_HASH($conf_passphrase, PASSWORD_DEFAULT);
+
+                $cols = ['password', 'ver_code', 'ver_code_time'];
+                $vals = [$hash_pass, 0, $conf['ver_code_timeout']];
+                $where = ['ver_code' => $_SESSION['code_verified'], 'email' => $_SESSION['email_address']];
+
+                $data = array_combine($cols, $vals);
+                $insert_passphrase = $conn->update('users', $data, $where);
+                if($insert_passphrase === TRUE){
+                    unset($_SESSION['code_verified']);
+                    header('Location: signin.php');
+                }
+            }else{
+                $ObjGlob->setMsg('msg', 'Error(s)', 'invalid');
+                $ObjGlob->setMsg('errors', $errors, 'invalid');
+            }
+        }
     }
 }

@@ -34,7 +34,8 @@ class user_forms{
           </div>
         </div>
 <?php
-    }    public function verify_code_form($ObjGlob){
+    }
+    public function verify_code_form($ObjGlob){
 ?>
       <div class="row align-items-md-stretch">
         <div class="col-md-9">
@@ -54,6 +55,33 @@ class user_forms{
                     <?php print (isset($err['ver_code_expired'])) ? "<span class='invalid'>" . $err['ver_code_expired'] . "</span>" : '' ; ?>
                 </div>
                 <button type="submit" name="verify_code" class="btn btn-primary">Verify Code</button>
+            </form>
+          </div>
+        </div>
+<?php
+    }
+        public function set_pass_form($ObjGlob){
+?>
+      <div class="row align-items-md-stretch">
+        <div class="col-md-9">
+          <div class="h-100 p-5 text-bg-dark rounded-3">
+            <h2>Set your password</h2>
+            <?php
+            print $ObjGlob->getMsg('msg');
+            $err = $ObjGlob->getMsg('errors');
+            ?>
+            <form action="<?php print basename($_SERVER["PHP_SELF"]); ?>" method="POST" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="passphrase" class="form-label">Enter your password:</label>
+                    <input type="password" name="passphrase" class="form-control form-control-lg" id="passphrase" placeholder="Enter your verification code" <?php print (isset($_SESSION["passphrase"])) ? 'value="'.$_SESSION["passphrase"].'"'  : ''; unset($_SESSION["passphrase"]); ?> >
+                    <?php print (isset($err['pass_length_err'])) ? "<span class='invalid'>" . $err['pass_length_err'] . "</span>" : '' ; ?>
+                  </div>
+                  <div class="mb-3">
+                    <label for="conf_passphrase" class="form-label">Confirm your password:</label>
+                    <input type="password" name="conf_passphrase" class="form-control form-control-lg" id="conf_passphrase" placeholder="Enter your verification code" <?php print (isset($_SESSION["conf_passphrase"])) ? 'value="'.$_SESSION["conf_passphrase"].'"'  : ''; unset($_SESSION["conf_passphrase"]); ?> >
+                    <?php print (isset($err['conf_pass_err'])) ? "<span class='invalid'>" . $err['conf_pass_err'] . "</span>" : '' ; ?>
+                </div>
+                <button type="submit" name="set_pass" class="btn btn-primary">Save Password</button>
             </form>
           </div>
         </div>
