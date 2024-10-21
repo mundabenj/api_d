@@ -156,7 +156,7 @@ if(!count($errors)){
 
                 $cols = ['password', 'ver_code', 'ver_code_time'];
                 $vals = [$hash_pass, 0, $conf['ver_code_timeout']];
-                $where = ['ver_code' => $_SESSION['code_verified'], 'email' => $_SESSION['email_address']];
+                $where = ['ver_code' => $_SESSION['code_verified']];
 
                 $data = array_combine($cols, $vals);
                 $insert_passphrase = $conn->update('users', $data, $where);

@@ -48,7 +48,7 @@ class user_forms{
             <form action="<?php print basename($_SERVER["PHP_SELF"]); ?>" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="fullname" class="form-label">Verification Code:</label>
-                    <input type="number" name="ver_code" class="form-control form-control-lg" maxlength="6" min="100000" max="999999" id="ver_code" placeholder="Enter your verification code" <?php print (isset($_SESSION["ver_code"])) ? 'value="'.$_SESSION["ver_code"].'"'  : ''; unset($_SESSION["ver_code"]); ?> >
+                    <input type="number" name="ver_code" class="form-control form-control-lg" maxlength="6" min="100000" max="999999" id="ver_code" placeholder="Enter your verification code" <?php if(isset($_GET["tok"])){ print 'value="'.$_GET['tok'].'"'; }else{ print (isset($_SESSION["ver_code"])) ? 'value="'.$_SESSION["ver_code"].'"'  : ''; unset($_SESSION["ver_code"]); } ?> >
                     <?php print (isset($err['not_numeric'])) ? "<span class='invalid'>" . $err['not_numeric'] . "</span>" : '' ; ?>
                     <?php print (isset($err['lenght_err'])) ? "<span class='invalid'>" . $err['lenght_err'] . "</span>" : '' ; ?>
                     <?php print (isset($err['ver_code_not_exist'])) ? "<span class='invalid'>" . $err['ver_code_not_exist'] . "</span>" : '' ; ?>
