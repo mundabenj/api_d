@@ -15,4 +15,21 @@
 				return $session;
 			}
 		}
+
+		public function verify_profile(){
+			if(isset($_SESSION["consort"]) & ($_SESSION["consort"]["genderId"] == 0 || $_SESSION["consort"]["roleId"] == 0)){
+				header("Location: complete_reg.php");
+				exit();
+			}
+		}
+
+		// check user is signed in to view protected pages
+		public function checksignin() {
+			if (!isset($_SESSION["consort"]) || !is_array($_SESSION["consort"])) {
+				$this->setMsg('msg', 'User must signin.', 'invalid-feedback');
+				@header("Location: signin.php");
+				exit ();
+			}
+		}
+
 	}

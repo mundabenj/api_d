@@ -38,4 +38,4 @@ function classAutoLoad($classname){
     $ObjAuth->set_passphrase($conn, $ObjGlob, $ObjSendMail, $lang, $conf);
     $ObjAuth->signin($conn, $ObjGlob, $ObjSendMail, $lang, $conf);
     $ObjAuth->signout($conn, $ObjGlob, $ObjSendMail, $lang, $conf);
-
+    $ObjAuth->save_details($conn, $ObjGlob, $ObjSendMail, $lang, $conf);

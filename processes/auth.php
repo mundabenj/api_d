@@ -219,4 +219,33 @@ if(!count($errors)){
             exit();
         }
     }
+    public function save_details($conn, $ObjGlob, $ObjSendMail, $lang, $conf){
+        if(isset($_POST["save_details"])){
+            $errors = array();
+            $genderId = $_SESSION["genderId"] = $conn->escape_values($_POST["genderId"]);
+            $roleId = $_SESSION["roleId"] = $conn->escape_values($_POST["roleId"]);
+
+            if(empty($genderId) || empty($roleId)){
+                $errors['invalid_selection'] = "Invalid selectionSomething missing"; 
+            }
+            if(!count($errors)){
+                $cols = ['genderId', 'roleId'];
+                $vals = [$genderId, $roleId];
+                $where = ['userId' => $_SESSION['consort']['userId']];
+
+                $data = array_combine($cols, $vals);
+                $complete_reg = $conn->update('users', $data, $where);
+                if($complete_reg === TRUE){
+                    $_SESSION["consort"]["genderId"] = $genderId;
+                    $_SESSION["consort"]["roleId"] = $roleId;
+                    header('Location: dashboard.php');
+                    exit();
+                }
+            }else{
+                $ObjGlob->setMsg('msg', 'Error(s)', 'invalid');
+                $ObjGlob->setMsg('errors', $errors, 'invalid');
+            }
+
+        }
+    }
 }

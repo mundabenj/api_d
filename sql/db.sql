@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS `api_d`;
+DROP DATABASE `api_d`;
 CREATE DATABASE IF NOT EXISTS `api_d` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `api_d`;
 
@@ -29,6 +29,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `username` varchar(50) NOT NULL DEFAULT '',
   `email` varchar(50) NOT NULL DEFAULT '',
   `password` varchar(60) NOT NULL DEFAULT '',
+  `ver_code` int(6) NOT NULL DEFAULT 0,
+  `ver_code_time` datetime NOT NULL DEFAULT current_timestamp(),
   `created` datetime NOT NULL DEFAULT current_timestamp(),
   `updated` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `genderId` tinyint(1) NOT NULL DEFAULT 0,
@@ -45,3 +47,11 @@ ALTER TABLE `gender`
 
 ALTER TABLE `roles`
   ADD CONSTRAINT `roles_ibfk_1` FOREIGN KEY (`roleId`) REFERENCES `users` (`roleId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+INSERT INTO `gender` (`gender`) VALUES ('Female');
+INSERT INTO `gender` (`gender`) VALUES ('Male');
+INSERT INTO `gender` (`gender`) VALUES ('Rather not say');
+
+INSERT INTO `roles` (`role`) VALUES ('Admin');
+INSERT INTO `roles` (`role`) VALUES ('Author');
+INSERT INTO `roles` (`role`) VALUES ('Editor');

@@ -82,7 +82,7 @@ class menus{
                   </li>
 <?php
 if(isset($_SESSION['consort'])){ ?>
-<li class="nav-item">
+<li class="nav-item" style="float: right;">
   <a class="nav-link" href="?signout">Sign Out</a>
 </li>
 <?php }else{ ?>
@@ -93,12 +93,7 @@ if(isset($_SESSION['consort'])){ ?>
   <a class="nav-link" href="signup.php">Sign Up</a>
 </li>
 <?php } ?>
-
-
                 </ul>
-                <form role="search">
-                  <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                </form>
               </div>
             </div>
           </nav>
