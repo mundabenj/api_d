@@ -80,20 +80,17 @@ class menus{
                   <li class="nav-item">
                     <a class="nav-link" href="#">Contact Us</a>
                   </li>
-<?php
-if(isset($_SESSION['consort'])){ ?>
-<li class="nav-item" style="float: right;">
-  <a class="nav-link" href="?signout">Sign Out</a>
-</li>
-<?php }else{ ?>
-<li class="nav-item">
-  <a class="nav-link" href="signin.php">Sign In</a>
-</li>
-<li class="nav-item">
-  <a class="nav-link" href="signup.php">Sign Up</a>
-</li>
-<?php } ?>
                 </ul>
+<div class="d-flex">
+        <?php
+if(isset($_SESSION['consort'])){ ?>
+  <a class="btn btn-outline-warning main_menu" href="?signout">Profile</a>
+  <a class="btn btn-outline-danger main_menu" href="?signout">Sign Out</a>
+<?php }else{ ?>
+  <a class="btn btn-outline-success main_menu" href="signin.php">Sign In</a>
+  <a class="btn btn-outline-success main_menu" href="signup.php">Sign Up</a>
+<?php } ?>
+</div>
               </div>
             </div>
           </nav>
