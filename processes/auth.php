@@ -248,4 +248,18 @@ if(!count($errors)){
 
         }
     }
+    public function update_profile($conn, $ObjGlob, $ObjSendMail, $lang, $conf){
+        if(isset($_POST["update_profile"])){
+            $errors = array();
+
+            $fullname = $_SESSION["fullname"] = $conn->escape_values(ucwords(strtolower($_POST["fullname"])));
+            $email_address = $_SESSION["email_address"] = $conn->escape_values(strtolower($_POST["email_address"]));
+            $username = $_SESSION["username"] = $conn->escape_values(strtolower($_POST["username"]));
+
+
+
+
+            $genderId = $_SESSION["genderId"] = $conn->escape_values($_POST["genderId"]);
+        }
+    }
 }
